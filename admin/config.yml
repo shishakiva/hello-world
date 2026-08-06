@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "images"
+
+collections:
+  - name: "gallery"
+    label: "Gallery Photos"
+    files:
+      - name: "gallery"
+        label: "Manage Gallery"
+        file: "gallery.json"
+        fields:
+          - name: "photos"
+            label: "Photos"
+            widget: "list"
+            summary: "{{fields.category}} - {{fields.caption}}"
+            fields:
+              - {label: "Photo", name: "image", widget: "image"}
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["location", "studio", "newborn", "milestone"]
+              - {label: "Caption (optional)", name: "caption", widget: "string", required: false}
